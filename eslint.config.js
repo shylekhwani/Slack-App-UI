@@ -37,7 +37,6 @@ export default [
         { allowConstantExport: true },
       ],
       'semi': ['error', 'always'],
-      'quotes': ['error', 'single'],
       'react/prop-types': 'off'
     },
   },
