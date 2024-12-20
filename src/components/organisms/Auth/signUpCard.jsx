@@ -16,13 +16,15 @@ export const SignUpCard = function () {
     });
       
     return (
-        <Card className="w-full max-w-md mx-auto p-4 border border-gray-200 shadow-sm rounded-lg sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+        <Card className="w-full max-w-md mx-auto p-4 border border-gray-200 shadow-sm rounded-lg sm:max-w-lg md:max-w-xl lg:max-w-auto">
+
         <CardHeader>
           <CardTitle className="text-xl font-bold text-gray-800">Sign Up</CardTitle>
           <CardDescription className="text-sm text-gray-600">
             Sign up to access your account
           </CardDescription>
         </CardHeader>
+
         <CardContent>
           <form className="space-y-4">
            <Input
@@ -77,10 +79,13 @@ export const SignUpCard = function () {
               Continue
             </Button>
           </form>
+
             <Separator className='my-5'/>
-          <div className="mt-4 text-center text-sm text-gray-600">
-             Already have an account? <a href="/signin" className="text-blue-600 hover:underline">Sign in</a>
-        </div>
+
+                <div className="mt-4 text-center text-sm text-gray-600">
+                    Already have an account? <a href="/signin" className="text-blue-600 hover:underline">Sign in</a>
+                </div>
+
         </CardContent>
       </Card>
     );
