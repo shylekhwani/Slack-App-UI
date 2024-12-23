@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
+import { Toaster } from './components/ui/toaster';
 import { Auth } from './pages/Auth/Auth';
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/notFound';
@@ -17,11 +18,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
         <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
         <Route path='/*' element={<NotFound/>}/>
      </Routes>
+     <Toaster/>
    </QueryClientProvider>
   
   );

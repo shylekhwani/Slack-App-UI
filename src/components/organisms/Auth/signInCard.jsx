@@ -1,3 +1,4 @@
+import { LucideLoader2, TriangleAlert } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
-export const SignInCard = function (signInForm, setSignInForm) {
+export const SignInCard = function ({signInForm, setSignInForm, validationError, onSignInFormSubmit, isPending, isSuccess, error}) {
 
     const navigate = useNavigate();
 
@@ -16,10 +17,33 @@ export const SignInCard = function (signInForm, setSignInForm) {
          <CardHeader>
             <CardTitle className="text-xl font-bold text-gray-800">Sign In</CardTitle>
             <CardDescription className="text-sm text-gray-600">Sign In to your Account</CardDescription>
+
+            {validationError && (
+            <div className="flex items-center gap-2 p-4 border border-red-500 bg-red-50 rounded-md">
+              <TriangleAlert className="w-6 h-6 text-red-500" />
+              <p className="text-sm text-red-600">{validationError.message}</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="flex items-center gap-2 p-4 border border-red-500 bg-red-50 rounded-md">
+              <TriangleAlert className="w-6 h-6 text-red-500" />
+              <p className="text-sm text-red-600">{validationError.message}</p>
+            </div>
+          )}
+
+          {isSuccess && (
+            <div className="flex items-center gap-2 p-4 border border-green-500 bg-green-50 rounded-md">
+              <p className="text-sm text-green-600 font-medium">
+                Successfully Signed In. You will be redirected to the Home page.
+              </p>
+              <LucideLoader2 className="animate-spin w-5 h-5 text-green-500" />
+            </div>
+          )}
          </CardHeader>
 
          <CardContent>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={onSignInFormSubmit}>
                 <Input
                   placeholder="Email"
                   required
@@ -29,6 +53,7 @@ export const SignInCard = function (signInForm, setSignInForm) {
                   value={signInForm.email}
                   type="email"
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                  disabled={isPending}
                 />
                   <Input
                   placeholder="Password"
@@ -39,9 +64,10 @@ export const SignInCard = function (signInForm, setSignInForm) {
                   value={signInForm.password}
                   type="password"
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                  disabled={isPending}
                 />
                  <Button
-                    disabled={false}
+                    disabled={isPending}
                     size="lg"
                     type="submit"
                     className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
