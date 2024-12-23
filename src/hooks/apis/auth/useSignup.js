@@ -4,7 +4,7 @@ import { signUpRequest } from "@/api/auth/auth";
 
 export const useSignup = function() { 
     // this function using reactQuery to call mutation and it returns "signUpMutation".
-     const {isPending, isSuccess, error, mutate: signUpMutation} = useMutation({
+     const {isPending, isSuccess, error, mutateAsync: signUpMutation} = useMutation({
 
         mutationFn: signUpRequest,
         onSuccess: (data) => {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
@@ -6,14 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
-export const SignInCard = function () {
+export const SignInCard = function (signInForm, setSignInForm) {
 
     const navigate = useNavigate();
-
-    const [signInForm, setSignInForm] = useState({
-        email: "",
-        password: ""
-    });
 
     return(
       <>
