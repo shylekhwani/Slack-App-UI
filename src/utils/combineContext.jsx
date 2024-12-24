@@ -25,7 +25,7 @@ export const combineContext = function(...providers) {
  * <ThemeProvider>
     <AuthProvider>
      <ToastProvider>
-      <App />
+       <Children /> (In our case Routes)
     </ToastProvider>
    </AuthProvider>
   </ThemeProvider>
@@ -36,6 +36,6 @@ export const combineContext = function(...providers) {
 /** ------- With Combine Context --------
  * 
  * <CombinedComponent>
- *    <App/>
+ *    <Children />
  * <CombinedComponent>
  */
