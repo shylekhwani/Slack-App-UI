@@ -9,8 +9,20 @@ export const useSignin = function() {
     const {isPending, isSuccess, error, mutateAsync: signInMutation} = useMutation({
 
         mutationFn: signInRequest,
-        onSuccess: (data) => {
-            console.log('Sucessfully signed up', data);
+        onSuccess: (response) => {
+            console.log('Sucessfully signed In', response);
+
+            const userObject = JSON.stringify(response.data);
+            // Convert the user data returned from the API (response.data) into a JSON string format. 
+            // This is necessary because localStorage only supports string values.
+
+            localStorage.setItem('user', userObject);
+            // Store the serialized user object in localStorage under the key 'user'. 
+            // This allows the app to persist user information across sessions, even after page reloads or browser restarts.
+
+            localStorage.setItem('token', response.data.token);
+            // Save the token separately for API calls. Access it directly from the original `response.data` object.
+
             toast({
                 title: "Successfully Signed In",
                 message: "Welcome To Slack",
