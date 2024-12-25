@@ -3,6 +3,7 @@ import './App.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
 
+import { ProtectedRoute } from './components/molecules/ProtectedRoute/ProtectedRoute';
 import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
 import { Toaster } from './components/ui/toaster';
@@ -20,7 +21,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <CombinedContextProvider>
            <Routes>
-              <Route path='/home' element={<Home/>}/>
+              <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
               <Route path='/*' element={<NotFound/>}/>

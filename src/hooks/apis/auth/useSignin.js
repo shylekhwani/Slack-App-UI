@@ -1,11 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { signInRequest } from "@/api/auth/auth";
+import { useAuthContext } from "@/hooks/context/useAuthContext";
 import { useToast } from "@/hooks/use-toast";
 
 export const useSignin = function() {
     const { toast } = useToast();
-    
+    const { setAuth } = useAuthContext();
+
     const {isPending, isSuccess, error, mutateAsync: signInMutation} = useMutation({
 
         mutationFn: signInRequest,
@@ -22,6 +24,12 @@ export const useSignin = function() {
 
             localStorage.setItem('token', response.data.token);
             // Save the token separately for API calls. Access it directly from the original `response.data` object.
+
+            setAuth({
+                user: response.data,
+                token: response.data.token,
+                isLoading: false
+            });
 
             toast({
                 title: "Successfully Signed In",

@@ -8,7 +8,8 @@ export const AuthContextProvider = function ({ children }) {
      // Define a state object `auth`
     const [auth, setAuth] = useState({
         user: null,
-        token: null
+        token: null,
+        isLoading: true
     });
 
     // Effect to restore auth state from localStorage when the app starts
@@ -18,8 +19,15 @@ export const AuthContextProvider = function ({ children }) {
         if(user && token) {
              setAuth({
              user: JSON.parse(user),
-             token: token
-             });
+             token: token,
+             isLoading: false
+           });
+        } else {
+            setAuth({
+                user: null,
+                token: null,
+                isLoading: false
+           });
         };
     }, []); // Empty dependency array ensures this runs only once (on mount)
 

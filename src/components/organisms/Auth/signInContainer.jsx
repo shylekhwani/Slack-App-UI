@@ -38,7 +38,9 @@ export const SignInContainer = function() {
     
         useEffect(() => {
         if(isSuccess){
-            navigate('/home');
+            setTimeout(() => {
+                navigate('/home');
+           },3000);
         };
         },[isSuccess,navigate]);
     
