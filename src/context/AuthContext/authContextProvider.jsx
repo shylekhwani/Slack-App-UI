@@ -31,9 +31,19 @@ export const AuthContextProvider = function ({ children }) {
         };
     }, []); // Empty dependency array ensures this runs only once (on mount)
 
+    const logOut = async function () {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        setAuth({
+            user: null,
+            token: null,
+            isLoading: false
+       });
+    };
+
     // Return a context provider to share `auth` and `setAuth` with child components
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, logOut }}>
             {children} {/* Render child components passed into the provider */}
         </AuthContext.Provider>
     );
