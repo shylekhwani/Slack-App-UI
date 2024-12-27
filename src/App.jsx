@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './components/molecules/ProtectedRoute/ProtectedRoute';
 import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
+import { Modals } from './components/organisms/Modals/Modals';
 import { Toaster } from './components/ui/toaster';
 import { CombinedContextProvider } from './context/combinedContextProvider';
 import { Auth } from './pages/Auth/Auth';
@@ -26,6 +27,7 @@ function App() {
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
               <Route path='/*' element={<NotFound/>}/>
          </Routes>
+         <Modals/>
         <Toaster/>
       </CombinedContextProvider>
    </QueryClientProvider>
