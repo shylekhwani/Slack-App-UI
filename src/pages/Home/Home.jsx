@@ -1,24 +1,30 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { UserButton } from "@/components/atoms/UserButton/UserButton";
 import { useFetchWorkspace } from "@/hooks/apis/workspaces/useFetchWorkspace";
 
 export const Home = function() {
+
    const {isFetching, workspaces} = useFetchWorkspace();
 
-   // useEffect(() => {
+   const navigate = useNavigate();
 
-   //    if(isFetching) {
-   //       return;
-   //    };
+   useEffect(() => {
 
-   //    console.log('your workspace', workspaces);
+      if(isFetching) {
+         return;
+      };
 
-   //    if(workspaces.length === 0 || !workspaces) {
-   //       console.log("no workspaces found");
-   //    };
+      console.log('your workspace', workspaces);
 
-   // }, [isFetching, workspaces]);
+      if(workspaces.length === 0 || !workspaces) {
+         console.log("no workspaces found");
+      } else {
+          navigate(`/workspaces/${workspaces[0]._id}`);
+      };
+
+   }, [isFetching, workspaces, navigate]);
 
    return (
       <>

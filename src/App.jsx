@@ -12,6 +12,7 @@ import { CombinedContextProvider } from './context/combinedContextProvider';
 import { Auth } from './pages/Auth/Auth';
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/notFound';
+import { WorkspaceLayout } from './pages/workspace/Layout';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
+              <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> Workspace </WorkspaceLayout> </ProtectedRoute>}/>
               <Route path='/*' element={<NotFound/>}/>
          </Routes>
          <Modals/>

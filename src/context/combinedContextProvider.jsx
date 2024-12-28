@@ -5,5 +5,5 @@ import { CreateWorkspaceContextProvider } from "./WorkspaceContext/CreateWorkspa
 
 export const CombinedContextProvider = combineContext(
     AuthContextProvider,
-    CreateWorkspaceContextProvider
+    CreateWorkspaceContextProvider,
 );
