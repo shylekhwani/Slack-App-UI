@@ -1,41 +1,27 @@
 import { BellIcon, HomeIcon, MessageSquareIcon, MoreHorizontal } from "lucide-react";
 
-import { UserButton } from "@/components/atoms/UserButton/UserButton";
 import { SideBarButton } from "@/components/molecules/SidebarButton/SideBarButton";
 
-export const WorkspaceSidebar = function() {
-    return (
-        <aside className="w-20 md:w-24 bg-gray-900 text-white flex flex-col items-center space-y-6 py-6 shadow-lg">
-        <div className="flex flex-col flex-grow items-center space-y-6">
-          {/* Home Button */}
-          <SideBarButton
-            Icon={HomeIcon}
-            label={'Home'}
-          />
+import { WorkspaceSwitcher } from "./WorkspaceSwitcher";
 
-          {/* Direct Messages Button */}
-          <SideBarButton
-            Icon={MessageSquareIcon}
-            label={'DMs'}
-          />
+export const WorkspaceSidebar = function () {
+  return (
+    <aside className="w-20 md:w-24 bg-black text-white flex flex-col items-center py-6 shadow-lg">
 
-          {/* Notifications Button */}
-          <SideBarButton
-            Icon={BellIcon}
-            label={'Notifications'}
-          />
-
-          {/* More Options Button */}
-          <SideBarButton
-            Icon={MoreHorizontal}
-            label={'More'}
-          />
+      {/* Switcher Section */}
+      <div className="mb-10">
+        <div className="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
+        <WorkspaceSwitcher />
         </div>
+      </div>
 
-        {/* User Profile Button */}
-        <div className="mt-auto mb-4">
-          <UserButton />
-        </div>
-      </aside>
-    );
+      {/* Navigation Section */}
+      <nav className="flex flex-col flex-grow items-center space-y-8">
+        <SideBarButton Icon={HomeIcon} label="Home" />
+        <SideBarButton Icon={MessageSquareIcon} label="DMs" />
+        <SideBarButton Icon={BellIcon} label="Notifications" />
+        <SideBarButton Icon={MoreHorizontal} label="More" />
+      </nav>
+    </aside>
+  );
 };
