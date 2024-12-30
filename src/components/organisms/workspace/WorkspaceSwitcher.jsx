@@ -56,6 +56,5 @@ export const WorkspaceSwitcher = function() {
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-      );
-      
+      ); 
 };
