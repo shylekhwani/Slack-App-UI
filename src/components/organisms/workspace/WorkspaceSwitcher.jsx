@@ -46,7 +46,7 @@ export const WorkspaceSwitcher = function() {
                 ?.filter((workspace) => workspace._id !== workspaceId) // Exclude active workspace
                 .map((workspace) => (
                   <DropdownMenuItem
-                    key={workspace.id}
+                    key={workspace._id}
                     className="cursor-pointer hover:bg-gray-100 p-2 rounded-md"
                     onClick={() => navigate(`/workspaces/${workspace._id}`)}
                   >

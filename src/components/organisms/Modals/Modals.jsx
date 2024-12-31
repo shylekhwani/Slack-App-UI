@@ -1,4 +1,4 @@
-import { CreateWorkspaceModal } from "@/components/molecules/WorkspaceModal/CreateWorkspaceModal";
+import { CreateWorkspaceModal } from "@/components/molecules/Workspace/WorkspaceModal/CreateWorkspaceModal";
 
 export const Modals = function() {
     return (

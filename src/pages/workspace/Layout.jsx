@@ -1,5 +1,5 @@
+import { ResizableSidebar } from "@/components/molecules/ResizableSidebar/ResizableSidebar";
 import { WorkspaceNavbar } from "@/components/organisms/workspace/WorkspaceNavbar";
-import { WorkspacePanel } from "@/components/organisms/workspace/WorkspacePanel";
 import { WorkspaceSidebar } from "@/components/organisms/workspace/WorkspaceSidebar";
 
 export const WorkspaceLayout = function({ children }) {
@@ -11,9 +11,9 @@ export const WorkspaceLayout = function({ children }) {
       {/* Sidebar and Resizable Panel Content */}
       <div className="flex h-[calc(100vh-64px)]">
         <WorkspaceSidebar />
-        <WorkspacePanel className="flex-1 p-4 bg-gray-100">
+        <ResizableSidebar className="flex-1 p-4 bg-gray-100">
           {children}
-          </WorkspacePanel>
+          </ResizableSidebar>
       </div>
     </div>
    );
