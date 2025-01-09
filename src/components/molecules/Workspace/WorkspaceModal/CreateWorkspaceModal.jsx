@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +9,8 @@ import { useCreateWorkspace } from "@/hooks/apis/workspaces/useCreateWorkspace";
 import { useCreateWorkspaceModalContext } from "@/hooks/context/useCreateWorkspaceModalContext";
 
 export const CreateWorkspaceModal = function() {
+
+    const queryClient = useQueryClient();
     
     // Access modal state and setter from context
     const { openWorkspaceModal, setOpenWorkspaceModal } = useCreateWorkspaceModalContext();
@@ -39,6 +42,7 @@ export const CreateWorkspaceModal = function() {
             console.log('Created workspace data', data);
             // Navigate to the newly created workspace
             navigate(`/workspaces/${data._id}`);
+            queryClient.invalidateQueries("fetchWorkspaces");
         } catch (error) {
             console.log('Not Able To Create Workspace', error);
         } finally {
