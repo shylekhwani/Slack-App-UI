@@ -1,4 +1,5 @@
 import { ChevronsDownIcon, ListFilterIcon, SquarePenIcon } from "lucide-react";
+import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,17 +13,24 @@ import { useAuthContext } from "@/hooks/context/useAuthContext";
 import { useWorkspacePreferenceModal } from "@/hooks/context/useWorkspacePreferenceModal";
 
 export const WorkspacePanelHeader = function ({ workspace }) {
-    const workspaceMembers = workspace?.members;
-
+    // Get current user details from the auth context
     const { auth } = useAuthContext();
 
-    const isLoggedInUserAdminOfWorkSpace = workspaceMembers?.find(
-      (member) =>
-        member.memberId === auth?.user?.id && member.role === "admin"
+    // Determine if the logged-in user is an admin of the workspace
+    const isLoggedInUserAdminOfWorkSpace = workspace?.members?.find(
+      (member) => member.memberId === auth?.user?.id && member.role === "admin"
     );
 
-    const {setOpenPreferenceModal,  setInitialValue} = useWorkspacePreferenceModal();
-    
+    // Extract context methods to set modal preferences
+    const { setOpenPreferenceModal, setInitialValue, setWorkspace } =
+      useWorkspacePreferenceModal();
+
+    // Update the workspace context whenever the workspace changes
+    useEffect(() => {
+      setWorkspace(workspace);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [workspace]);
+
     return (
       <div className="p-4 bg-gray-800 text-white shadow-md flex items-center justify-between">
         {/* Left Section */}

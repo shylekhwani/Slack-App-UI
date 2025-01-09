@@ -5,10 +5,13 @@ import { WorkspacePanelHeader } from "@/components/molecules/Workspace/Workspace
 import { useFetchWorkspaceById } from "@/hooks/apis/workspaces/useFetchWorkspaceById";
 
 export const WorkspacePanel = function () {
+  // Extract workspaceId from the URL parameters
   const { workspaceId } = useParams();
 
+  // Fetch workspace details using the custom hook
   const { isFetching, isSuccess, workspace } = useFetchWorkspaceById(workspaceId);
 
+  // Show loading state while fetching
   if (isFetching) {
     return (
       <div className="flex justify-center items-center h-full w-full">
@@ -17,6 +20,7 @@ export const WorkspacePanel = function () {
     );
   }
 
+  // Show error state if fetch fails
   if (!isSuccess) {
     return (
       <div className="flex justify-center items-center h-full w-full flex-col space-y-2">
@@ -26,5 +30,6 @@ export const WorkspacePanel = function () {
     );
   }
 
+  // Pass the fetched workspace details to the WorkspacePanelHeader
   return <WorkspacePanelHeader workspace={workspace} />;
 };

@@ -38,7 +38,7 @@ export const CreateWorkspaceModal = function() {
             });
             console.log('Created workspace data', data);
             // Navigate to the newly created workspace
-            navigate(`/workspaces/${data.id}`);
+            navigate(`/workspaces/${data._id}`);
         } catch (error) {
             console.log('Not Able To Create Workspace', error);
         } finally {
