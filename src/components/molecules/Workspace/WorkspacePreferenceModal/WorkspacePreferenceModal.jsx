@@ -1,3 +1,6 @@
+import { Edit2Icon, Trash2Icon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useWorkspacePreferenceModal } from "@/hooks/context/useWorkspacePreferenceModal";
 
@@ -7,7 +10,7 @@ export const WorkspacePreferenceModal = function () {
 
   function closeModal() {
     setOpenPreferenceModal(false);
-  }
+  };
 
   return (
     <Dialog open={openPreferenceModal} onOpenChange={closeModal}>
@@ -19,19 +22,19 @@ export const WorkspacePreferenceModal = function () {
         </DialogHeader>
         <div className="mt-6">
           {/* Workspace Name Section */}
-          <div className="flex items-center justify-between py-3 border-b">
-            <p className="text-sm font-medium text-gray-700">Workspace Name</p>
-            <button className="text-sm font-medium text-blue-500 ">
-              Edit
-            </button>
+          <div className="flex items-center justify-between py-3">
+            <p className="text-sm font-medium text-gray-700">Edit {initialValue} </p>
+            <Button className="text-sm font-medium text-blue-500 bg-slate-200 ">
+              <Edit2Icon/>
+            </Button>
           </div>
 
           {/* Additional Content Placeholder */}
           <div className="flex items-center justify-between py-3 border-b">
             <p className="text-sm font-medium text-gray-700">Delete Workspace</p>
-            <button className="text-sm font-medium text-blue-500 ">
-              Delete
-            </button>
+            <Button className="text-sm font-medium text-blue-500 bg-slate-200 ">
+             <Trash2Icon/>
+            </Button>
           </div>
         </div>
       </DialogContent>

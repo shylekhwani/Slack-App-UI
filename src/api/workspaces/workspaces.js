@@ -38,3 +38,29 @@ export const fetchWorkspaceByIdRequest = async function ({workspaceId, token }) 
         throw error.response?.data || error.message;
     }
 };
+
+export const deleteWorkspaceByIdRequest = async function ({workspaceId, token }) {
+  try {
+    const response = await axios.delete(`/workspaces/${workspaceId}`,{
+        headers:{'x-access-token': token }
+    });
+    console.log('response in Delete workspace request', response);
+    return response?.data?.data;
+  } catch (error) {
+    console.log('error in Deleting workspace request',error);
+    throw error.response?.data || error.message;
+  }  
+};
+
+export const updateWorkspaceRequest = async function ({workspaceId, name, token }) {
+    try {
+      const response = axios.put(`/workspaces/${workspaceId}`, {name} ,{
+        headers:{'x-access-token': token }
+      });
+      console.log('response in updating workspace request', response);
+      return response?.data?.data;
+    } catch (error) {
+        console.log('error in Updating workspace request',error);
+        throw error.response?.data || error.message;
+    }
+};
