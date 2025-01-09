@@ -16,9 +16,9 @@ export const WorkspacePanelHeader = function ({ workspace }) {
 
     const { auth } = useAuthContext();
 
-    const isLoggedInUserAdminOfWorkSpace = workspaceMembers?.some(
+    const isLoggedInUserAdminOfWorkSpace = workspaceMembers?.find(
       (member) =>
-        member.memberId === auth?.user?._id && member.role === "admin"
+        member.memberId === auth?.user?.id && member.role === "admin"
     );
 
     const {setOpenPreferenceModal,  setInitialValue} = useWorkspacePreferenceModal();
