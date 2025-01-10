@@ -9,7 +9,7 @@ export const useFetchWorkspaceById = function(id) {
      const {isFetching, isSuccess, error, data: workspace} = useQuery({
        queryFn: () => fetchWorkspaceByIdRequest({workspaceId: id, token: auth?.token}),
        queryKey: [`fetchWorkspaceById-${id}`],
-       staleTime: 30000
+       staleTime: 10000
      });
 
      return {
