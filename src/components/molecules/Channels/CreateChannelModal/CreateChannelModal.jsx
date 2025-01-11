@@ -43,7 +43,7 @@ export const CreateChannelModal = function () {
             <div className="flex justify-end">
                 <Button
                 type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
                 >
                 Create Channel
                 </Button>

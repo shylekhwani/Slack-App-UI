@@ -85,7 +85,7 @@ export const CreateWorkspaceModal = function() {
                         disabled={isPending} // Disable button while submission is pending
                         size="lg"
                         type="submit"
-                        className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                        className="w-full py-2 bg-slate-700 text-white rounded-md hover:bg-slate-800 focus:ring-2 focus:ring-slate-500"
                      >
                         Create Workspace
                     </Button>
