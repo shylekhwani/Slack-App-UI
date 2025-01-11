@@ -27,6 +27,7 @@ function App() {
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
               <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> Workspace </WorkspaceLayout> </ProtectedRoute>}/>
+              <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRoute> Channel </ProtectedRoute>} />
               <Route path='/*' element={<NotFound/>}/>
          </Routes>
          <Modals/>

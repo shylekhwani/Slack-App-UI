@@ -18,7 +18,7 @@ export const WorkspacePanelHeader = function ({ workspace }) {
 
     // Determine if the logged-in user is an admin of the workspace
     const isLoggedInUserAdminOfWorkSpace = workspace?.members?.find(
-      (member) => member.memberId === auth?.user?.id && member.role === "admin"
+      (member) => member.memberId._id === auth?.user?.id && member.role === "admin"
     );
 
     // Extract context methods to set modal preferences
