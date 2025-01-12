@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export const SideBarItem = function ({ 
     label, 
-    id, // channelId
+    channelId,
     icon:Icon
  }) {
        const{ workspaceId } = useParams();
@@ -16,7 +16,7 @@ export const SideBarItem = function ({
         >
             <Link 
                 className="flex items-center gap-2 w-full text-left" 
-                to={`/workspaces/${workspaceId}/channels/${id}`}
+                to={`/workspaces/${workspaceId}/channels/${channelId}`}
             >
                 <Icon className='w-5 h-5 text-blue-500' />
                 <span className="ml-5 text-sm font-medium"> {label} </span>

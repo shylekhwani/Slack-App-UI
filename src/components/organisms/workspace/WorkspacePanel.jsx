@@ -52,7 +52,7 @@ export const WorkspacePanel = function () {
             return <SideBarItem 
                 key={channel._id} 
                 label={channel.name}
-                id={channel._id}
+                channelId={channel._id}
                 icon={HashIcon}             
              />;
             }
