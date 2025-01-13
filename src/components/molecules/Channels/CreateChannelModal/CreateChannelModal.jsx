@@ -46,8 +46,11 @@ export const CreateChannelModal = function () {
       setOpenCreateChannelModal(false);
 
       // Invalidate the query to refetch the workspace data and include the new channel
-      queryClient.invalidateQueries(`fetchWorkspaceById-${workspaceId}`);
-
+      queryClient.invalidateQueries(['fetchWorkspaceById', workspaceId], {
+        refetchActive: true,
+        refetchInactive: true,
+      });
+      
       toast({ title: "Channel Added Successfully", type: "success" });
     } catch (error) {
       // Log and notify about the error

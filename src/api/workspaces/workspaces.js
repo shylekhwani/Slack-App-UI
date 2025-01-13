@@ -54,7 +54,7 @@ export const deleteWorkspaceByIdRequest = async function ({workspaceId, token })
 
 export const updateWorkspaceRequest = async function ({workspaceId, name, token }) {
     try {
-      const response = axios.put(`/workspaces/${workspaceId}`, {name} ,{
+      const response = await axios.put(`/workspaces/${workspaceId}`, {name} ,{
         headers:{'x-access-token': token }
       });
       console.log('response in updating workspace request', response);
@@ -67,7 +67,7 @@ export const updateWorkspaceRequest = async function ({workspaceId, name, token 
 
 export const addChannelToWorkspaceRequest = async function ({workspaceId, channelName, token}) {
     try {
-        const response = axios.put(`/workspaces/${workspaceId}/channels`, {channelName} ,{
+        const response = await axios.put(`/workspaces/${workspaceId}/channels`, {channelName} ,{
           headers:{'x-access-token': token }
         });
         console.log('response in Adding Channel to workspace request', response);
@@ -76,4 +76,17 @@ export const addChannelToWorkspaceRequest = async function ({workspaceId, channe
           console.log('error in  Adding Channel to workspace request',error);
           throw error.response?.data || error.message;
       }
+};
+
+export const resetWorkspaceJoinCodeRequest = async function ({workspaceId, token}) {
+    try {
+        const response = await axios.put(`/workspaces/${workspaceId}/joinCode/reset`,{},{
+          headers:{'x-access-token': token }
+        });
+        console.log('response in reset workspace joinCode request', response);
+        return response?.data?.data;
+      } catch (error) {
+          console.log('error in reset workspace joinCode request',error);
+          throw error.response?.data || error.message;
+    }
 };

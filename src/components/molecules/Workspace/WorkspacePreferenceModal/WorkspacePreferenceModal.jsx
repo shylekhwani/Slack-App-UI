@@ -83,7 +83,7 @@ export const WorkspacePreferenceModal = function () {
     try {
       await updateWorkspaceMutation(renameValue);
       // Invalidate the query to refetch the latest data
-      queryClient.invalidateQueries(`fetchWorkspaceById-${workspace._id}`);
+      queryClient.invalidateQueries(['fetchWorkspaceById', workspace._id]);
       setOpenPreferenceModal(false);
       toast({
         title: "Workspace Updated Successfully",
