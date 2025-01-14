@@ -16,7 +16,10 @@ export const WorkspaceInviteModal = function({ openInviteModal, setOpenInviteMod
         const inviteCode = joinCode;
         await navigator.clipboard.writeText(inviteCode);
         setOpenInviteModal(false);
-        alert("Invite code copied to clipboard!");
+        toast({
+            title: 'Invite Code Copied',
+            type: 'Success'
+           });
     };
 
     async function handelResetCode() {

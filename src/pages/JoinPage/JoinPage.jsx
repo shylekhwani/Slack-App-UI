@@ -1,14 +1,35 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import VerificationInput from "react-verification-input";
 
 import { Button } from "@/components/ui/button";
+import { useJoinWorkspace } from "@/hooks/apis/workspaces/useJoinWorkspace";
+import { useToast } from "@/hooks/use-toast";
 
 export const JoinPage = function () {
-    const { workspaceId } = useParams();
 
-    async function handelAddMemberToWorkspace() {
-        console.log('Adding Member To Workspace');
-    }
+    const { workspaceId } = useParams();
+    const {toast} = useToast();
+    const navigate = useNavigate();
+
+    const {joinWorkspaceMutation} = useJoinWorkspace(workspaceId);
+
+    async function handelJoinToWorkspace(joinCode) {
+      try {
+        await joinWorkspaceMutation(joinCode);
+        toast({
+           title: 'Joined To Workspace',
+           type: 'success'
+        });
+        navigate(`/workspaces/${workspaceId}`);
+        console.log('Joined To Workspace',joinCode);
+      } catch (error) {
+        console.log('error in Joining to workspace',error);
+        toast({
+            title: 'failed To Join Workspace',
+            type: 'error'
+        });
+      }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
@@ -26,7 +47,7 @@ export const JoinPage = function () {
                 {/* Verification Input */}
                 <div className="flex justify-center">
                     <VerificationInput
-                        onComplete={handelAddMemberToWorkspace}
+                        onComplete={handelJoinToWorkspace}
                         length={6}
                         classNames={{
                             container: 'flex space-x-2',

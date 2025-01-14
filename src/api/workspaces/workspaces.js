@@ -90,3 +90,16 @@ export const resetWorkspaceJoinCodeRequest = async function ({workspaceId, token
           throw error.response?.data || error.message;
     }
 };
+
+export const joinWorkspaceRequest = async function ({workspaceId, joinCode, token}) {
+    try {
+        const response = await axios.put(`/workspaces/${workspaceId}/join`, {joinCode} ,{
+            headers:{'x-access-token': token }
+        });
+        console.log('response in Joining to workspace request', response);
+        return response?.data?.data;
+    } catch (error) {
+        console.log('error in Joining to workspace request',error);
+        throw error.response?.data || error.message;
+    }
+};
