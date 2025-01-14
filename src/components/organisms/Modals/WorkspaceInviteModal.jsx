@@ -13,8 +13,8 @@ export const WorkspaceInviteModal = function({ openInviteModal, setOpenInviteMod
     
     async function handelCopy() {
         // Copy the join code to clipboard
-        const inviteLink = `${window.location.origin}/join/${joinCode}`;
-        await navigator.clipboard.writeText(inviteLink);
+        const inviteCode = joinCode;
+        await navigator.clipboard.writeText(inviteCode);
         setOpenInviteModal(false);
         alert("Invite code copied to clipboard!");
     };
@@ -62,6 +62,16 @@ export const WorkspaceInviteModal = function({ openInviteModal, setOpenInviteMod
                 <CopyIcon className="w-4 h-4" />
                 <span>Copy Code</span>
             </Button>
+            
+            {/* Link To Redirect user To Join Page */}
+            <a 
+              href={`/workspaces/join/${workspaceId}`}
+              target="blank"
+              className=""
+            >
+                Redirect To Login Page
+            </a>
+
             </div>
 
             <div className="mt-4 flex flex-col items-center space-y-4">

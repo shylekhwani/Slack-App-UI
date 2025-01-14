@@ -11,6 +11,7 @@ import { Toaster } from './components/ui/toaster';
 import { CombinedContextProvider } from './context/combinedContextProvider';
 import { Auth } from './pages/Auth/Auth';
 import { Home } from './pages/Home/Home';
+import { JoinPage } from './pages/JoinPage/JoinPage';
 import { NotFound } from './pages/NotFound/notFound';
 import { WorkspaceLayout } from './pages/workspace/Layout';
 
@@ -28,6 +29,7 @@ function App() {
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
               <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> Workspace </WorkspaceLayout> </ProtectedRoute>}/>
               <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRoute> Channel </ProtectedRoute>} />
+              <Route path='/workspaces/join/:workspaceId' element={<JoinPage />} />
               <Route path='/*' element={<NotFound/>}/>
          </Routes>
          <Modals/>
