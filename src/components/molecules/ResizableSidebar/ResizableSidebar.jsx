@@ -14,9 +14,10 @@ export const ResizableSidebar = function({ children }) {
           <ResizablePanel
           defaultSize={20}
           minSize={11}
-          className="bg-slate-900 text-white "
+          className="bg-slate-900 text-white h-full "
           >
             <WorkspacePanel />
+
         </ResizablePanel>
         <ResizableHandle withHandle />
 
