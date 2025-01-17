@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useCurrentWorkspace } from "@/hooks/context/useCurrentWorkspace";
 
 export const UserItem = function({ memberId, label = 'Member', image }) {
-  const { workspace } = useCurrentWorkspace();
+  const { currentWorkspace} = useCurrentWorkspace();
+  // console.log(currentWorkspace);
 
   return (
     <Button 
@@ -13,7 +14,7 @@ export const UserItem = function({ memberId, label = 'Member', image }) {
       className="flex items-center space-x-3 bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-blue-500 p-2 rounded-md"
     >
       <Link 
-        to={`/workspaces/${workspace?._id}/members/${memberId}`} 
+        to={`/workspaces/${currentWorkspace?._id}/members/${memberId}`} 
         className="flex items-center space-x-3 text-gray-800 hover:text-gray-900"
       >
         {/* Avatar Section */}

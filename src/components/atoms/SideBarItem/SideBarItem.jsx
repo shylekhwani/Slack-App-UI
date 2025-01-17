@@ -7,8 +7,8 @@ export const SideBarItem = function ({
     channelId,
     icon:Icon
  }) {
-       const{ workspaceId } = useParams();
-
+       const { workspaceId } = useParams();
+    //    console.log(workspaceId);
         return (
             <Button 
             size='sm' 
