@@ -1,6 +1,7 @@
 import { Loader2Icon, TriangleAlertIcon } from "lucide-react";
 import { useParams } from "react-router-dom";
 
+import { ChannelHeader } from "@/components/molecules/Channels/ChannelHeader/ChannelHeader";
 import { useGetChannelDetails } from "@/hooks/apis/channel/useGetChannelDetails";
 
 import { ChatInput } from "../../components/molecules/ChatInput/ChatInput";
@@ -11,6 +12,7 @@ export const ChannelPage = function() {
     console.log(channelId);
 
     const {isFetching, isSuccess, error, channels} = useGetChannelDetails(channelId);
+  
 
     if(isFetching) {
         return (
@@ -34,9 +36,7 @@ export const ChannelPage = function() {
         <div className='flex flex-col min-h-screen bg-gray-50'>
             <div className='flex-1 overflow-auto p-4'>
                 {/* Messages or Channel Content */}
-                <div className="h-full flex justify-center items-center text-gray-400">
-                    <span>No messages yet</span>
-                </div>
+                <ChannelHeader name={channels?.name} />
             </div>
 
             <div className='border-t border-gray-200 p-4'>
