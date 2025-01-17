@@ -31,7 +31,7 @@ export const WorkspacePanel = function () {
   }
 
   return (
-    <div className="flex flex-col bg-gray-100 h-full overflow-y-auto"> {/* Added h-full and overflow-y-auto */}
+    <div className="flex flex-col bg-gray-100 h-full overflow-y-auto"> 
       <WorkspacePanelHeader workspace={workspace} />
 
       <div className="mt-4 p-2">
