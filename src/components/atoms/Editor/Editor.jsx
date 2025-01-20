@@ -14,7 +14,7 @@ import { ToolTip } from "../ToolTip/ToolTip"; // Tooltip wrapper component.
 export const MessageEditor = function ({ onSubmit }) {
 
   const [image, setImage] = useState(null); // Holds the uploaded image file.
-  const [isToolbarVisible, setIsToolbarVisible] = useState(false); // Tracks toolbar visibility.
+  const [isToolbarVisible, setIsToolbarVisible] = useState(true); // Tracks toolbar visibility.
 
   const containerRef = useRef(); // Ref for the editor container div.
   const quillRef = useRef(); // Ref for the Quill instance.
@@ -98,7 +98,7 @@ export const MessageEditor = function ({ onSubmit }) {
               )
           }
 
-          <div className='flex px-2 pb-2 z-[5]'>
+          <div className='flex px-2 pb-2 z-[5] items-center'>
               <ToolTip label={!isToolbarVisible ? 'Show toolbar' : 'Hide toolbar'} side='bottom' align='center'>
                   <Button
                       size="iconSm"
@@ -128,24 +128,24 @@ export const MessageEditor = function ({ onSubmit }) {
                   onChange={(e) => setImage(e.target.files[0])}
               />
 
-              <ToolTip label="Send Message">
+                <ToolTip label="Send Message">
                   <Button
-                      size="iconSm"
-                      className="ml-auto bg-[#007a6a] hover:bg-[#007a6a]/80 text-white"
-
-                      onClick={() => {
-                        const messageContent = JSON.stringify(quillRef.current?.getContents()); // Get Quill content.
-                        onSubmit({ body: messageContent, image }); // Pass content and image to `onSubmit`.
-                        quillRef.current?.setText(""); // Clear the editor.
-                        setImage(null); // Reset image.
-                        imageInputRef.current.value = ""; // Clear file input.
-                      }}
-                      
-                      disabled={false}
+                    size="iconSm"
+                    className="bg-[#007a6a] hover:bg-[#007a6a]/80 text-white flex-shrink-0 ml-auto"
+                    onClick={() => {
+                      console.log(JSON.stringify(quillRef.current?.getContents()));
+                      const messageContent = JSON.stringify(quillRef.current?.getContents()); // Get Quill content.
+                      onSubmit({ body: messageContent, image }); // Pass content and image to `onSubmit`.
+                      quillRef.current?.setText(""); // Clear the editor.
+                      setImage(null); // Reset image.
+                      imageInputRef.current.value = ""; // Clear file input.
+                    }}
+                    disabled={false}
                   >
-                      <MdSend className='size-4' />
+                    <MdSend className="size-4" />
                   </Button>
-              </ToolTip>
+                </ToolTip>
+                
           </div>
       </div>
 
