@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2Icon, TriangleAlertIcon } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import { ChannelHeader } from "@/components/molecules/Channels/ChannelHeader/ChannelHeader";
@@ -20,6 +20,14 @@ export const ChannelPage = function() {
     const { joinChannel } = useSocket();
     const { isFetching: fetchingMsg, isSuccess, messages } = useGetMessages(channelId);
     const { setMessageList, messageList } = useChannelMessages();
+
+    const messageContainerListRef = useRef(null);
+
+    useEffect(() => {
+        if(messageContainerListRef.current) {
+            messageContainerListRef.current.scrollTop = messageContainerListRef.current.scrollHeight;
+        }
+    }, [messageList]);
     
     useEffect(() => {
         if (!isFetching && !error) {
@@ -62,7 +70,7 @@ export const ChannelPage = function() {
             </div>
 
             {/* Messages Content */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div ref={messageContainerListRef} className="flex-1 overflow-y-auto p-4 space-y-4">
                 {!fetchingMsg && messageList?.map((message) => (
                     <Message
                         key={message._id}
