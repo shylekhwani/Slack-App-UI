@@ -2,6 +2,8 @@ import { MessageEditor } from "@/components/atoms/Editor/Editor";
 import { useAuthContext } from "@/hooks/context/useAuthContext";
 import { useCurrentWorkspace } from "@/hooks/context/useCurrentWorkspace";
 import { useSocket } from "@/hooks/context/useSocketContext";
+import { NEW_MESSAGE_EVENT } from "@/utils/eventConstants";
+
 
 export const ChatInput = function () {
 
@@ -9,9 +11,10 @@ export const ChatInput = function () {
   const { auth } = useAuthContext();
   const { currentWorkspace } = useCurrentWorkspace();
 
+
   async function handelSubmit({ body }) {
     console.log('body', body);
-    socket?.emit('NewMessage', {
+    socket?.emit(NEW_MESSAGE_EVENT, {
         channelId: currentChannel,
         body: body,
         userId: auth?.user?.id,

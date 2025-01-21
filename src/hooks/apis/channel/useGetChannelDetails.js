@@ -14,8 +14,8 @@ export const useGetChannelDetails = function(channelId) {
 
     return {
         isFetching,
-         isSuccess,
-         error,
-         channels
+        isSuccess,
+        error,
+        channels
     };
 };

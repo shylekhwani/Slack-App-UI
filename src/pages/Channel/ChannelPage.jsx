@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Loader2Icon, TriangleAlertIcon } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -6,25 +7,35 @@ import { ChannelHeader } from "@/components/molecules/Channels/ChannelHeader/Cha
 import { Message } from "@/components/molecules/Message/Message";
 import { useGetChannelDetails } from "@/hooks/apis/channel/useGetChannelDetails";
 import { useGetMessages } from "@/hooks/apis/messages/useGetMessages";
+import { useChannelMessages } from "@/hooks/context/useChannelMessages";
 import { useSocket } from "@/hooks/context/useSocketContext";
 
 import { ChatInput } from "../../components/molecules/ChatInput/ChatInput";
 
 export const ChannelPage = function() {
     const { channelId } = useParams();
-    //console.log(channelId);
+    const queryClient = useQueryClient();
 
     const { isFetching, error, channels } = useGetChannelDetails(channelId);
-
     const { joinChannel } = useSocket();
-
-    const { isFetching: fetchingMsg, messages} = useGetMessages(channelId);
-
-    useEffect(()=>{
-        if(!isFetching && !error){
+    const { isFetching: fetchingMsg, isSuccess, messages } = useGetMessages(channelId);
+    const { setMessageList, messageList } = useChannelMessages();
+    
+    useEffect(() => {
+        if (!isFetching && !error) {
             joinChannel(channelId);
         }
-    },[isFetching, error, joinChannel, channelId]);
+    }, [isFetching, error, joinChannel, channelId]);
+
+    useEffect(() => {
+       if (isSuccess) {
+           setMessageList(messages);
+       }
+    },[isSuccess, messages, setMessageList]);
+
+    useEffect(() => {
+       queryClient.invalidateQueries('fetchedMessages', channelId);
+    },[channelId, queryClient]);
 
     if (isFetching) {
         return (
@@ -44,26 +55,27 @@ export const ChannelPage = function() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-50">
-            {/* Channel Content */}
-            <div className="flex-1 overflow-y-auto p-4">
+        <div className="flex flex-col h-screen bg-gray-50">
+            {/* Channel Header */}
+            <div className="flex-none p-4 border-b border-gray-200 bg-white">
                 <ChannelHeader name={channels?.name} />
             </div>
 
             {/* Messages Content */}
-             {!fetchingMsg && messages?.map((message) => {
-                return <Message 
-                    key={message._id}
-                    authorImage={message.userId?.avatar}
-                    authorName={message.userId?.username}
-                    createdAt={message.createdAt}
-                    body={message.body}
-                />;
-             })} 
-          
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                {!fetchingMsg && messageList?.map((message) => (
+                    <Message
+                        key={message._id}
+                        authorImage={message.userId?.avatar}
+                        authorName={message.userId?.username}
+                        createdAt={message.createdAt}
+                        body={message.body}
+                    />
+                ))}
+            </div>
 
             {/* Chat Input Section */}
-            <div className="border-t border-gray-200 p-4 pb-8 bg-white">
+            <div className="flex-none p-4 border-t border-gray-200 bg-white">
                 <ChatInput />
             </div>
         </div>

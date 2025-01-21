@@ -123,3 +123,14 @@
   background: #f3f4f6; /* Light background for the scrollbar track */
 }
 
+.message-container {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+.message-container:last-child {
+  margin-bottom: 0;
+}
