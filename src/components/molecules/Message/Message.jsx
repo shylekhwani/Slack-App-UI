@@ -1,7 +1,8 @@
+import { MessageImageThumbnail } from "@/components/atoms/MessageImageThumbnail/MessageImageThumbnail";
 import { MessageRenderer } from "@/components/atoms/MessageRenderer/MessageRenderer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export const Message = function ({ authorImage, authorName, createdAt, body }) {
+export const Message = function ({ authorImage, authorName, createdAt, body, image }) {
   return (
     <div className="flex items-start gap-3 p-4 bg-white rounded-md shadow-sm border border-gray-200">
       <div className="flex-shrink-0">
@@ -27,6 +28,8 @@ export const Message = function ({ authorImage, authorName, createdAt, body }) {
 
         <div className="text-gray-700">
           <MessageRenderer value={body} />
+          {/* Any Images If There Are */}
+          {image && <MessageImageThumbnail url={image} />}
         </div>
       </div>
     </div>

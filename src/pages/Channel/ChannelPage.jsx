@@ -13,37 +13,47 @@ import { useSocket } from "@/hooks/context/useSocketContext";
 import { ChatInput } from "../../components/molecules/ChatInput/ChatInput";
 
 export const ChannelPage = function() {
-    const { channelId } = useParams();
-    const queryClient = useQueryClient();
+    const { channelId } = useParams(); // Extract the channel ID from the route parameters.
+    const queryClient = useQueryClient(); // React Query client instance for invalidating queries.
 
+    // Fetch channel details for the given channel ID.
     const { isFetching, error, channels } = useGetChannelDetails(channelId);
-    const { joinChannel } = useSocket();
+    const { joinChannel } = useSocket(); // Custom hook to manage socket events.
+
+    // Fetch messages for the given channel ID.
     const { isFetching: fetchingMsg, isSuccess, messages } = useGetMessages(channelId);
+
+    // Custom hook to manage the state of channel messages.
     const { setMessageList, messageList } = useChannelMessages();
 
+    // Reference for the message container to enable auto-scroll.
     const messageContainerListRef = useRef(null);
 
+    // Scroll to the bottom of the message container whenever the message list changes.
     useEffect(() => {
-        if(messageContainerListRef.current) {
-            messageContainerListRef.current.scrollTop = messageContainerListRef.current.scrollHeight;
+        if (messageContainerListRef.current) {
+            messageContainerListRef.current.scrollTop = messageContainerListRef.current.scrollHeight; // Auto-scroll to the latest message.
         }
     }, [messageList]);
     
+    // Join the channel via socket once channel details are successfully fetched.
     useEffect(() => {
         if (!isFetching && !error) {
-            joinChannel(channelId);
+            joinChannel(channelId); // Join the specific channel using the socket connection.
         }
     }, [isFetching, error, joinChannel, channelId]);
 
+    // Update local message list when messages are successfully fetched from the API.
     useEffect(() => {
        if (isSuccess) {
-           setMessageList(messages);
+           setMessageList(messages); // Set the fetched messages to the local message list state.
        }
-    },[isSuccess, messages, setMessageList]);
+    }, [isSuccess, messages, setMessageList]);
 
+    // Invalidate the cached messages whenever the channel ID changes.
     useEffect(() => {
-       queryClient.invalidateQueries('fetchedMessages', channelId);
-    },[channelId, queryClient]);
+       queryClient.invalidateQueries('fetchedMessages', channelId); // Clear the cache for old messages when switching channels.
+    }, [channelId, queryClient]);
 
     if (isFetching) {
         return (
@@ -78,6 +88,7 @@ export const ChannelPage = function() {
                         authorName={message.userId?.username}
                         createdAt={message.createdAt}
                         body={message.body}
+                        image={message.image}
                     />
                 ))}
             </div>
