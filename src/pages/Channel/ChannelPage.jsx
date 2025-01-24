@@ -46,7 +46,7 @@ export const ChannelPage = function() {
     // Update local message list when messages are successfully fetched from the API.
     useEffect(() => {
        if (isSuccess) {
-           setMessageList(messages); // Set the fetched messages to the local message list state.
+           setMessageList(messages?.reverse()); // Set the fetched messages to the local message list state.
        }
     }, [isSuccess, messages, setMessageList]);
 

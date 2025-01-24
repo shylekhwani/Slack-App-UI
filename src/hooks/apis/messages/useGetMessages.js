@@ -9,6 +9,7 @@ export const useGetMessages = function (channelId) {
     const {isFetching, isSuccess, error, data: messages} = useQuery({
             queryKey: ['fetchedMessages', channelId],
             queryFn: () => getMessagesRequest({channelId, limit: 10, page: 1, token: auth?.token }),
+            cacheTime: 0,
             onError: (err) => {
                 console.error("React Query error in useGetMessages:", err);
             },

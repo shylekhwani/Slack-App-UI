@@ -15,6 +15,7 @@ import { DmsPage } from './pages/Dm\'s Page/DmsPage';
 import { Home } from './pages/Home/Home';
 import { JoinPage } from './pages/JoinPage/JoinPage';
 import { NotFound } from './pages/NotFound/notFound';
+import Payment from './pages/Payments/Payments';
 import { WorkspaceLayout } from './pages/workspace/Layout';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> Workspace </WorkspaceLayout> </ProtectedRoute>}/>
               <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRoute> <WorkspaceLayout> <ChannelPage /> </WorkspaceLayout> </ProtectedRoute>} />
               <Route path='/workspaces/:workspaceId/members/:memberId' element={<ProtectedRoute> <WorkspaceLayout> <DmsPage/> </WorkspaceLayout> </ProtectedRoute>} />
+              <Route path='/makepayment' element={<ProtectedRoute> <Payment /> </ProtectedRoute>} />
               <Route path='/workspaces/join/:workspaceId' element={<JoinPage />} />
               <Route path='/*' element={<NotFound/>}/>
          </Routes>
