@@ -15,8 +15,9 @@ import { DmsPage } from './pages/Dm\'s Page/DmsPage';
 import { Home } from './pages/Home/Home';
 import { JoinPage } from './pages/JoinPage/JoinPage';
 import { NotFound } from './pages/NotFound/notFound';
-import Payment from './pages/Payments/Payments';
+import Payment from './pages/Payments/PaymentsPage';
 import { WorkspaceLayout } from './pages/workspace/Layout';
+import { WorkspacePage } from './pages/workspace/WorkspacePage';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
               <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
-              <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> Workspace </WorkspaceLayout> </ProtectedRoute>}/>
+              <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> <WorkspacePage /> </WorkspaceLayout> </ProtectedRoute>}/>
               <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRoute> <WorkspaceLayout> <ChannelPage /> </WorkspaceLayout> </ProtectedRoute>} />
               <Route path='/workspaces/:workspaceId/members/:memberId' element={<ProtectedRoute> <WorkspaceLayout> <DmsPage/> </WorkspaceLayout> </ProtectedRoute>} />
               <Route path='/makepayment' element={<ProtectedRoute> <Payment /> </ProtectedRoute>} />

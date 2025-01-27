@@ -103,3 +103,16 @@ export const joinWorkspaceRequest = async function ({workspaceId, joinCode, toke
         throw error.response?.data || error.message;
     }
 };
+
+export const addMemberToWorkspaceRequest = async function ({workspaceId, memberId, role='member', token}) {
+    try {
+        const response = await axios.put(`/workspaces/${workspaceId}/members`, {memberId, role} ,{
+            headers:{'x-access-token': token }
+          });
+          console.log('response in Adding Member to workspace request', response);
+          return response?.data?.data;
+    } catch (error) {
+        console.log('error in Adding Member to workspace request',error);
+        throw error.response?.data || error.message;
+    }
+};

@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { SideBarItem } from "@/components/atoms/SideBarItem/SideBarItem";
 import { UserItem } from "@/components/atoms/UserItem/UserItem";
 import { WorkspacePanelHeader } from "@/components/molecules/Workspace/WorkspacePanel/WorkspacePanelHeader";
-import { WorkspacePanelSection } from "@/components/molecules/Workspace/WorkspacePanelSection/WorkspacePanelSection";
+import { WorkspacePanelSection } from "@/components/molecules/Workspace/WorkspacePanelSection/WorkspacePanelSectionChannel";
+import { WorkspacePanelSectionMember } from "@/components/molecules/Workspace/WorkspacePanelSection/WorkspacePannelSectionMember";
 import { useFetchWorkspaceById } from "@/hooks/apis/workspaces/useFetchWorkspaceById";
 
 export const WorkspacePanel = function () {
@@ -53,7 +54,7 @@ export const WorkspacePanel = function () {
         ))}
       </WorkspacePanelSection>
 
-      <WorkspacePanelSection label={'Members'} className="p-2">
+      <WorkspacePanelSectionMember label={'Members'} className="p-2">
         {workspace?.members?.map((member) => (
           <UserItem 
             key={member.memberId._id}
@@ -62,7 +63,7 @@ export const WorkspacePanel = function () {
             image={member.memberId.avatar}
           />
         ))}
-      </WorkspacePanelSection>
+      </WorkspacePanelSectionMember>
     </div>
   );
 };

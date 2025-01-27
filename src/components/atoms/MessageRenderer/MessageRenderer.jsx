@@ -37,7 +37,7 @@ export const MessageRenderer = function ({ value }) {
   return (
     <div
       ref={rendererRef} // Attach the `rendererRef` to this `div`.
-      className="ql-editor ql-renderer" // Use Quill's styling for consistency.
+      className="ql-editor ql-renderer text-white" // Use Quill's styling for consistency.
     />
   );
 };
