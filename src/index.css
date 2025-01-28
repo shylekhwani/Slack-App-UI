@@ -134,3 +134,101 @@
 .message-container:last-child {
   margin-bottom: 0;
 }
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f3f4f7;
+}
+
+/* Container */
+.reset-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.reset-password-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header */
+.reset-password-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Form Styles */
+.reset-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.password-input {
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.password-input:focus {
+  border-color: #4e73df;
+  outline: none;
+  background-color: #fff;
+}
+
+.submit-btn {
+  padding: 14px;
+  background-color: #4e73df;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2e59d9;
+}
+
+.submit-btn:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.success-message {
+  margin-top: 20px;
+  color: #28a745;
+  font-size: 1rem;
+}
+
+.error-message {
+  margin-top: 20px;
+  color: #dc3545;
+  font-size: 1rem;
+}

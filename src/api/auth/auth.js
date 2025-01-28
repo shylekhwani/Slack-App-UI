@@ -26,3 +26,28 @@ export const signInRequest = async function ({email, password}) {
         throw error.response.data;
     }
 };
+
+export const forgotPasswordRequest = async function ({email}) {
+    try {
+        const response = await axios.post('/users/forgot-password',{
+            email
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error.response?.data || { message: "Unknown error occurred" };
+    }
+};
+
+export const confirmPasswordRequest = async function ({resetToken, newPassword}) {
+   try {
+         const response = await axios.post('/users/reset-password',{
+            resetToken,
+            newPassword
+        });
+        return response.data;
+    } catch (error) {
+    console.log(error);
+    throw error.response?.data || { message: "Unknown error occurred" };
+    }  
+};

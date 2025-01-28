@@ -89,6 +89,16 @@ export const SignInCard = function ({signInForm, setSignInForm, validationError,
                 </span>
                 </div>
 
+                <div className="mt-4 text-center text-sm text-gray-600">
+                      Forgot your password?{' '}
+                    <span
+                        className="text-blue-600 hover:underline cursor-pointer"
+                        onClick={() => navigate('/auth/forgot-password')} // Update the path to the password reset page
+                    >
+                        Reset Password
+                    </span>
+               </div>
+
          </CardContent>
        </Card>
         </>

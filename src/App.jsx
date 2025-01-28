@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
 
 import { ProtectedRoute } from './components/molecules/ProtectedRoute/ProtectedRoute';
+import { ForgotPassword } from './components/organisms/Auth/forgotPassword';
+import { ResetPassword } from './components/organisms/Auth/ResetPassword';
 import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
 import { Modals } from './components/organisms/Modals/Modals';
@@ -31,6 +33,8 @@ function App() {
               <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
+              <Route path='/auth/forgot-password' element={ <ForgotPassword /> }/>
+              <Route path='/reset-password' element={ <ResetPassword /> }/>
               <Route path='/workspaces/:workspaceId' element={<ProtectedRoute> <WorkspaceLayout> <WorkspacePage /> </WorkspaceLayout> </ProtectedRoute>}/>
               <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRoute> <WorkspaceLayout> <ChannelPage /> </WorkspaceLayout> </ProtectedRoute>} />
               <Route path='/workspaces/:workspaceId/members/:memberId' element={<ProtectedRoute> <WorkspaceLayout> <DmsPage/> </WorkspaceLayout> </ProtectedRoute>} />
