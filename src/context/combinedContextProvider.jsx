@@ -1,8 +1,8 @@
 import { CombineContext } from "@/utils/CombineContext";
 
-import { AuthContextProvider } from "./AuthContext/authContextProvider";
+import { AuthContextProvider } from "./AuthContext/AuthContextProvider";
 import { CreateChannelContextProvider } from "./ChannelContext/CreateChannelContext";
-import { AddMemberContextProvider } from "./MemberContext/addMemberContext";
+import { AddMemberContextProvider } from "./MemberContext/AddMemberContext";
 import { ChannelMessagesProvider } from "./MessagesContext/ChannelMessages";
 import { SocketContextProvider } from "./SocketContext/SocketContext";
 import { CreateWorkspaceContextProvider } from "./WorkspaceContext/CreateWorkspaceContext";
