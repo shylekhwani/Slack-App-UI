@@ -9,7 +9,7 @@ import { CreateWorkspaceContextProvider } from "./WorkspaceContext/CreateWorkspa
 import { WorkspaceContextProvider } from "./WorkspaceContext/WorkspaceContext";
 import { WorkspacePreferenceModalProvider } from "./WorkspacePreferenceModalContext/WorkspacePreferenceModalContext";
 
-export const CombinedContextProvider = CombineContext(
+const CombinedContextProvider = CombineContext(
     ChannelMessagesProvider,
     SocketContextProvider,
     AuthContextProvider,
@@ -19,3 +19,5 @@ export const CombinedContextProvider = CombineContext(
     CreateChannelContextProvider,
     AddMemberContextProvider,
 );
+
+export default CombinedContextProvider;  // Default export
