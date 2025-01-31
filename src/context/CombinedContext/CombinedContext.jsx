@@ -1,6 +1,6 @@
 import { mergeAllContext } from "@/utils/MergeAllContext";
 
-import { AuthContextProvider } from "../AuthContext/AuthContextProvider";
+import { AuthContextProvider } from "../AuthContext/AuthContext";
 import { CreateChannelContextProvider } from "../ChannelContext/CreateChannelContext";
 import { AddMemberContextProvider } from "../MemberContext/AddMemberContext";
 import { ChannelMessagesProvider } from "../MessagesContext/ChannelMessages";
