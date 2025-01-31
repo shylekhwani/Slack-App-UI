@@ -10,7 +10,7 @@ import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
 import { Modals } from './components/organisms/Modals/Modals';
 import { Toaster } from './components/ui/toaster';
-import CombinedContextProvider from './context/CombinedContextProvider';
+import { CombinedContext_Provider } from './context/CombinedContext/CombinedContext';
 import { Auth } from './pages/Auth/Auth';
 import { ChannelPage } from './pages/Channel/ChannelPage';
 import { DmsPage } from './pages/Dm\'s Page/DmsPage';
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CombinedContextProvider>
+      <CombinedContext_Provider>
            <Routes>
               <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
@@ -44,7 +44,7 @@ function App() {
          </Routes>
          <Modals/>
         <Toaster/>
-      </CombinedContextProvider>
+      </CombinedContext_Provider>
    </QueryClientProvider>
   );
 };
