@@ -10,7 +10,7 @@ import { SignInContainer } from './components/organisms/Auth/signInContainer';
 import { SignUpConatiner } from './components/organisms/Auth/signUpConatiner';
 import { Modals } from './components/organisms/Modals/Modals';
 import { Toaster } from './components/ui/toaster';
-import { CombinedContextProvider } from './context/CombinedContextProvider';
+import { CombinedContextProvider } from './context/CombinedContextProvider.jsx';
 import { Auth } from './pages/Auth/Auth';
 import { ChannelPage } from './pages/Channel/ChannelPage';
 import { DmsPage } from './pages/Dm\'s Page/DmsPage';
