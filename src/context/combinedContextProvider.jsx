@@ -1,4 +1,4 @@
-import { combineContext } from "@/utils/combineContext";
+import { CombineContext } from "@/utils/CombineContext";
 
 import { AuthContextProvider } from "./AuthContext/authContextProvider";
 import { CreateChannelContextProvider } from "./ChannelContext/CreateChannelContext";
@@ -9,7 +9,7 @@ import { CreateWorkspaceContextProvider } from "./WorkspaceContext/CreateWorkspa
 import { WorkspaceContextProvider } from "./WorkspaceContext/WorkspaceContext";
 import { WorkspacePreferenceModalProvider } from "./WorkspacePreferenceModalContext/WorkspacePreferenceModalContext";
 
-export const CombinedContextProvider = combineContext(
+export const CombinedContextProvider = CombineContext(
     ChannelMessagesProvider,
     SocketContextProvider,
     AuthContextProvider,

@@ -1,5 +1,5 @@
 // The function takes multiple context providers as arguments (...providers) and combines them.
-export const combineContext = function(...providers) { 
+export const CombineContext = function(...providers) { 
 
     // Returns a new component that wraps children with all the provided context providers.
     return function({children}) {
