@@ -1,7 +1,7 @@
 import { combineContext } from "@/utils/combineContext";
 
 import { AuthContextProvider } from "./AuthContext/authContextProvider";
-import { CreateChannelContextProvider } from "./ChannelContext/createChannelContext.jsx";
+import { CreateChannelContextProvider } from "./ChannelContext/CreateChannelContext";
 import { AddMemberContextProvider } from "./MemberContext/addMemberContext";
 import { ChannelMessagesProvider } from "./MessagesContext/ChannelMessages";
 import { SocketContextProvider } from "./SocketContext/SocketContext";
