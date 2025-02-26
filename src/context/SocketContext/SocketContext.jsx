@@ -13,7 +13,7 @@ export const SocketContextProvider = function({ children }) {
     const { setMessageList, messageList } = useChannelMessages();
 
 
-    const socket = io(import.meta.env.VITE_BACKEND_SOCKET_URL);
+    const socket = io(import.meta.env.VITE_BACKEND_SOCKET_URL || "http://localhost:3000");
 
     socket.on(NEW_MESSAGE_RECEIVED_EVENT, (data)=>{
         console.log('New Message Received', data);

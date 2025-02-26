@@ -1,7 +1,7 @@
 import axios from "@/config/axiosConfig";
 
 export const getMessagesRequest = async function ({ channelId, limit, offset, token }) {
-    console.log("Token being sent:", token); // Debug log
+    // console.log("Token being sent:", token); // Debug log
     try {
         const response = await axios.get(`/messages/${channelId}`, {
             params: {
