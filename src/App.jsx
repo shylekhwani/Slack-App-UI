@@ -18,6 +18,7 @@ import { Home } from './pages/Home/Home';
 import { JoinPage } from './pages/JoinPage/JoinPage';
 import { NotFound } from './pages/NotFound/notFound';
 import Payment from './pages/Payments/PaymentsPage';
+import { WelcomePage } from './pages/Welcome/Welcome';
 import { WorkspaceLayout } from './pages/workspace/Layout';
 import { WorkspacePage } from './pages/workspace/WorkspacePage';
 
@@ -30,6 +31,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <CombinedContext_Provider>
            <Routes>
+              <Route path='/' element={ <WelcomePage /> }/>
               <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
               <Route path='/auth/signin' element={<Auth> <SignInContainer/> </Auth>}/>
               <Route path='/auth/signup' element={<Auth> <SignUpConatiner/>  </Auth>}/>
