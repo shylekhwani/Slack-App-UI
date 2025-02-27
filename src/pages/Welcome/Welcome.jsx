@@ -14,8 +14,8 @@ export const WelcomePage = function() {
       >
         {/* Slack Logo & Title */}
         <div className="flex flex-col items-center">
-          <img src="src\assets\slacklogo.svg" alt="Slack Logo" className="w-20 h-20 mb-3" />
-          <h1 className="text-4xl font-bold text-white">Welcome to Slack Clone</h1>
+          <img src="src\assets\android-chrome-192x192.png" alt="Slack Logo" className="w-20 h-20 mb-3" />
+          <h1 className="text-4xl font-bold text-white">Welcome to HiveChate</h1>
         </div>
         
         {/* Description */}
